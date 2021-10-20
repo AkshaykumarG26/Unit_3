@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMDB</title>
+
+    <style>
+        input{
+            width: 300px;
+        }
+
+        #movies{
+            height: 500px;
+            width: 404px;
+            margin-left: 100px;
+            margin-top: 10px;
+            border: 1px solid black;
+            overflow: scroll;
+        }
+    </style>
+</head>
+<body>
+
+    <label for="">Search Movie: </label>
+    <input oninput="debounce(main, 2000)" type="text" name="" id="movie" placeholder="Enter movie name">
+
+    <div id = "movies">
+
+    </div>
+
+
+</body>
+</html>
+
+
+<script>
+
+    // seach movies
+
+    var timerId;
+
+    var movies_div = document.getElementById("movies")
+
+    async function searchMovies(movie_name){
+
+        try{
+
+            let res = await fetch(`http://www.omdbapi.com/?apikey=c78ab9a6&s=${movie_name}`);
+            
+            var data = await res.json()
+        }
+        catch(e){
+            console.log("e: ", e)
+        }
+
+        // console.log(data)
+        return data
+
+    }
+
+    
+    function appendMovies(movies){
+
+        if (movies === undefined){
+            return false
+        }
+
+        movies_div.innerHTML = null
+        
+        movies.forEach(function(movie){
+
+            let p = document.createElement("p");
+            p.innerHTML = movie.Title
+
+            let img = document.createElement("img");
+            img.src = movie.Poster
+            
+            movies_div.append(p, img)
+
+            // a.append(movies_div)
+        })
+        
+    }
+
+
+
+
+    async function main(){
+
+        let name = document.getElementById("movie").value;
+
+        // get searchd movies
+
+        if(name.length < 3){
+            return false;
+        }
+
+        let res = await searchMovies(name);
+
+        let movies_data = res.Search
+
+        console.log(movies_data)
+
+
+        appendMovies(movies_data)
+
+    }
+
+
+
+    function debounce(func, delay){
+
+        if(timerId){
+
+            clearTimeout(timerId)
+        }
+
+
+        timerId = setTimeout(function(){
+
+            func();
+
+        }, delay);
+
+
+    }
+</script>

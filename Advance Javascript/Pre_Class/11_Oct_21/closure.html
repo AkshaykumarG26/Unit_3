@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure</title>
+</head>
+<body>
+    <h1>Closure</h1>
+
+</body>
+</html>
+
+<script>
+    // Closure is related to functions
+    // nested functions
+    // there has to be a dependency
+
+    function greet(){
+
+        let n = 'akshay';
+
+        return function(){
+
+            return function(){
+
+                console.log(n)
+            }
+            // console.log()
+        }
+    }
+
+    let x = greet()
+    
+    let y = x()
+
+    y()
+</script>

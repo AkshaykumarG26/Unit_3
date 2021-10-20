@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototype and Iheritance</title>
+</head>
+<body>
+    <h1>Prototype and Iheritance</h1>
+</body>
+</html>
+
+<script>
+
+
+    /*
+    var shoes = {
+
+        brand: "Nike",
+        size: 9,
+        year: 2020,
+        
+    }
+
+
+    const shoe2 = Object.create(shoes);
+    shoe2.brand = "Adidas";
+
+    const sneakers = Object.create(shoe2);
+    sneakers.price = 1000;
+    // console.log("shoes:", shoes)
+    console.log("sneakers:",sneakers)
+
+    const lofars = Object.create(shoes);
+    lofars.price = 1400;
+    console.log("Lofar:", lofars)
+
+    */
+
+    /*
+    const post = {
+
+        name: "Do Inheritance",
+        user: "AKshay",
+        likes: 200,
+
+    }; // prototype
+
+
+    function Comments(n, u){
+        
+        this.name = n
+        this.user = u
+    }
+
+    Comments.prototype = post
+
+    let c1 = new Comments("Acha bana", "Amol");
+    let c2 = new Comments("Ekch number", "Rishi")
+    let c3 = new Comments("ye to thik he", "Amit")
+    console.log(c1)
+    console.log(c2)
+    console.log(c3)
+
+
+    */
+
+
+    /*
+
+    let name = new String("Akshay")
+    console.log(name)
+
+    let name2 = "Amol"
+    console.log(name2.charAt(2))
+    
+    */
+
+    // let arr = new myArray("Amol", "Akshya", "Amit");
+
+
+    function myArray(values){
+        console.log(arguments)
+        console.log("length",arguments.length)
+    }
+
+    myArray("Amol", "Akshay", "Akash")
+
+
+</script>

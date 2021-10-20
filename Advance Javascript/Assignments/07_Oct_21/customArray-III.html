@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Array - III</title>
+</head>
+<body>
+    <h1>Custom Array - III</h1>
+</body>
+</html>
+
+<script>
+
+    function customArray_III() {
+
+        Object.defineProperty(this, "length",{
+            value:0,
+            writable: true,
+            enumerable: false,
+        })
+
+        this.length = arguments.length;
+
+
+        for (let i = 0; i < this.length; i++){
+            this[i] = arguments[i]
+        }
+
+    }
+
+    customArray_III.prototype.pushValue = function(value){
+
+        let index = this.length;
+        this[index] = value;
+        this.length++
+
+    };
+    
+    let array1 = new customArray_III("Amol", "Akshay", "Amit")
+    array1.pushValue("Sanket")
+    array1.pushValue("Google")
+    console.log("Array1: ", Object.values(array1));
+
+    
+    
+    customArray_III.prototype.reverse = function(){
+        
+        this.length = arguments.length;
+        for (let i = this.length; i > 0; i--){
+            this[i] = arguments[i]
+        }
+    }
+    
+    let array2 = new customArray_III("Sundar", "Shiv", "satya")
+    console.log("Original Array: ", Object.values(array2))
+    console.log("Reversed array: ", Object.values(array2).reverse())
+    
+    console.log("Return 1st element of array: ", array1[0])
+    
+
+</script>

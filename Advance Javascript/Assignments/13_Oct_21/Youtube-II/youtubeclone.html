@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="toggle-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+            <!-- <span></span> -->
+        </div>
+
+        <img src="download.png" class="logo" alt="">
+
+        <div class="search-box">
+            <input type="text" name="" id="query" class="search-bar" placeholder="Search">
+            <button onclick="searchVideos()" ><img src="https://image.shutterstock.com/image-vector/magnifying-glass-search-icon-flat-260nw-738763579.jpg" alt="" class="search-btn"></button>
+
+        </div>
+
+        <div class="user-options">
+            <img src="https://cdn-icons-png.flaticon.com/128/711/711245.png" alt="" class="icon">
+            <img src="https://cdn-icons-png.flaticon.com/128/2095/2095242.png" alt="" class="icon">
+            <img src="https://cdn-icons-png.flaticon.com/128/1827/1827347.png" alt="" class="icon">
+            <div class="user-dp">
+                <img src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png" alt="">
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="side-bar">
+        <a href="#" class="links"><img src="https://t4.ftcdn.net/jpg/00/97/00/07/240_F_97000769_R4zepLTgmf8G22W7G2o8JA1HeiVK2CkK.jpg" alt="">Home</a>
+        <a href="#" class="links"><img src="https://t3.ftcdn.net/jpg/01/65/68/44/240_F_165684454_FGvUJmFlcAAf0JuMe08RqsbUEXTIpu3u.jpg" alt="">Explore</a>
+        <a href="#" class="links"><img src="subscription.svg" alt="">Subscription</a>   
+    </div>
+
+    <div class="filters">
+        <button class="filter-options">All</button>
+        <button class="filter-options">Javascript</button>
+        <button class="filter-options">CSS</button>
+        <button class="filter-options">HTML</button>
+        <button class="filter-options">Bootstrap</button>
+        <button class="filter-options">Entertainment</button>
+        <button class="filter-options">Trending</button>
+        <button class="filter-options">Popular</button>
+        <button class="filter-options">Top</button>
+    </div>
+
+    <div class="video-container" id="videos">
+
+        <div class="video">
+
+        </div>
+
+    </div>
+</body>
+</html>
+
+<script src="app.js"></script>

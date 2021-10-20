@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constructor Functions</title>
+</head>
+<body>
+    <h1>Constructor Functions</h1>
+</body>
+</html>
+
+<script>
+
+    /*
+    function products(n, p, q, t){
+
+        this.name = n
+        this.price = p
+        this.quantity = q
+        this.type = t
+
+    }
+
+    let p1 = new products("shirt", 2000, 3, "clothss");
+    let p2 = new products("chappal", 200, 2, 'shoes');
+
+    console.log(p1)
+    console.log(p2)
+
+    */
+
+    /*
+
+   function Newspaper(n){
+
+    this.headline = "Students have finally moved to Unit 3";
+    this.date = new Date().getDate();
+    this.id = Math.random()*10;
+    this.name = n;
+
+   }
+
+   let n1 = new Newspaper("Times of India");
+   console.log(n1)
+
+   let i = 0;
+   while (i < 10){
+       let n = new Newspaper("TOI")
+       console.log(n)
+       i++
+   }
+
+   */
+
+
+   /*
+   let str  = new String("AKSHAY");
+   console.log(str)
+   console.log(str.toString())
+
+   let name = "Akshay";
+   console.log(name)
+
+   console.log(str.charAt(3))
+   */
+
+//   call apply bind
+
+   let person1 = {
+
+    name: "akshay",
+    nickName: "Akki",
+    showNickName(){
+        console.log(this.nickName)
+    }
+   };
+
+   let person2 = {
+       name: "Amol",
+       nickName: "amlya"
+
+   }
+
+
+    //person.showNickName()
+
+    person1.showNickName.call(person2)
+    // console.log(person2) // shownickName.call dose not add showNIckName function in the person2 obj it uses that and throw
+
+
+
+    function Person3(n,a){
+        this.name = n
+        this.age = a
+    }
+
+    function Teacher(s,n,a){
+        // call
+        Person3.call(this,n,a)
+        this.subject = s
+    }
+
+    function Student(n,a){
+        // apply
+        Person3.apply(this,[n,a])
+        this.class = '10th'
+    }
+
+    function Player(n,a){
+        // bind
+        let p = Person3.bind(this,n,a)
+        p()
+        // console.log("P:", p)
+        this.sport = "Cricket"
+    }
+
+    let t1 = new Teacher("Math",'aman',35)
+    console.log(t1)
+
+    let s1 = new Student("Akshay", 24)
+    console.log(s1)
+
+    let p1 = new Player("Dhoni", 33)
+    console.log(p1)
+    //    let shoNIckNameOfPerson = person.showNickName.bind(person2);
+    //    shoNIckNameOfPerson()
+
+</script>

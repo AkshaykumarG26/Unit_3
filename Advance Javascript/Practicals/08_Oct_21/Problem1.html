@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+</head>
+<body>
+    <div>
+        <label for="">Enter Name:</label>
+        <input type="text" name="" id="name">
+        <button onclick="Register()">Register</button>
+    </div>
+</body>
+</html> 
+<script>
+
+    let queue = ['Amol', 'Akshay', 'Amit', 'Akash', 'Anil','Amita'];
+
+    function Register(){
+        let name = document.getElementById("name").value
+
+        queue.push(name)
+
+        let message = `${name} Your reg successfull...!` 
+        alert(message)
+
+        let myPromise = new Promise(function(resolve, reject){
+            
+
+            // kwwp on checking after certain amount of time is promise fullfilled
+
+            setInterval(function(){
+                if(queue[0] === name){
+                    resolve(`${name} It's your turn now...!`)
+                }
+                });
+            },3000);
+            
+        
+        myPromise.then(function(res){
+            alert(res)
+        });
+    }
+
+
+
+
+    function startVaccination(){
+
+        queue.shift();
+
+        console.log("queue:", queue)
+
+        if (queue.length === 0){
+            clearInterval(interval)
+        }
+    }
+
+    startVaccination();
+
+    let interval = setInterval(startVaccination, 3000)
+</script> 

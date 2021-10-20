@@ -1,0 +1,113 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaccine alert System</title>
+</head>
+<body>
+    
+    <div>
+
+        <label for="">Enter Name:</label>
+        <input type="text" name="" id="name" placeholder="Enter your name">
+        <br><br>
+        <label for="">Enter Age: </label>
+        <input type="number" name="" id="age" placeholder="Enter Age">
+        <br><br>
+        <button onclick="Register()">Register</button>
+        <p id="vaccineCount"></p>
+        <p id="peopleCount"></p>
+    </div>
+</body>
+</html>
+
+
+<script>
+
+    let nameQueue = ['Amol', 'Akash', 'Amit'];
+    let ageQueue = [25, 24, 21];
+
+
+    
+    function Register(){
+        
+        var name = document.getElementById("name").value;
+        
+        var age = document.getElementById("age").value;
+        
+        let vaccineCount = document.getElementById("vaccineCount");
+        
+        let peopleCount = document.getElementById("peopleCount");
+        
+        let numberOfVaccines = 4;
+        
+        if (age >= 60){
+
+            nameQueue.unshift(name)
+            ageQueue.unshift(age)
+
+            }else{
+                nameQueue.push(name);
+                ageQueue.push(age);
+            }
+
+
+        console.log(nameQueue)
+        console.log(ageQueue)
+        let message = `${name} Reg successfull. Now go stand`;
+
+        alert(message);
+
+        let promise = new Promise(function(resolve, reject){
+
+            setInterval(function(){
+
+                
+                if(nameQueue[0] === name){
+                    resolve(`${name} its ur turn now !`)
+                }
+            },3000)
+        });
+
+        promise.then(function(res){
+
+            alert(res)
+
+        })
+
+        
+        
+
+        
+        function startVaccination(){
+            nameQueue.shift();
+            ageQueue.shift();
+            numberOfVaccines--
+            
+            if(nameQueue.length == 0 && ageQueue.length == 0){
+                clearInterval(interval)
+            }
+            console.log(nameQueue)
+            // console.log(ageQueue)
+            
+            vaccineCount.innerHTML = "Number of vaccines available: " + (+numberOfVaccines);
+            
+            peopleCount.innerHTML = "Number of people in queue: " + nameQueue.length;
+
+
+            if (vaccineCount === "-1"){
+                alert("vaccine out of stock, visit tomorrow")
+            }
+        
+        // startVaccination()
+
+
+    }
+        let interval = setInterval(startVaccination, 3000)
+
+    }
+</script>

@@ -1,0 +1,13 @@
+c29c0a53f2d54404af129798b713c1d0     =>  Newsapi
+
+1af43dccaecf27298224252033520d2a     =>    OpenWeather
+
+
+http://www.omdbapi.com/?type=${movieName}&apikey=c78ab9a6    => omdbapi
+
+
+`http://www.omdbapi.com/?apikey=c78ab9a6&s=${movieName}`   => for search movie omdbapi
+
+
+
+AIzaSyCqP5bhdp2g0TL7o43DM0bic06NRz3HUTo   => youtube

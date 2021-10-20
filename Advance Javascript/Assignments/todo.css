@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 600px;
+    background: blue;
+    background: linear-gradient(139deg, #03ddffcb 0%, #ff0381b6 90%);
+}
+
+.container{
+    position: relative;
+    max-width: 800px;
+    padding: 10px;
+    margin: 0px auto;
+}
+
+.addTask{
+    width: 100%;
+    display: flex;
+    padding: 10px 0;
+}
+
+.addTask > input[type = "text"]{
+    width: 90%;
+    color: #333;
+    border: none;
+    border-bottom: 2px solid gray;
+    background: none;
+    padding: 10px;
+    font-size: 20px;
+    outline: none;
+
+}
+
+.addTask button{
+    margin: 0 10px;
+    background: #222;
+    color: #fff;
+    font-size: 20px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+
+.notCompleted, .completed{
+    margin: 5px 0;
+    padding: 20px;
+}
+
+h3{
+    font-size: 25px;
+    text-align: center;
+}
+
+ol{
+    list-style: none;
+}
+
+ol li{
+    width: 100%;
+    padding: 20px;
+    margin: 5px 0;
+    background: pink;
+    display: flex;
+}
+
+ol.completed li{
+    background: rgb(46, 146, 46);
+}

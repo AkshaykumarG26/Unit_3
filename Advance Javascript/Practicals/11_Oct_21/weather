@@ -1,0 +1,32 @@
+// 1af43dccaecf27298224252033520d2a  -> api key
+
+    let container = document.getElementById("data")
+
+    async function getWeather(){
+
+        let city = document.getElementById("city").value
+        let res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=1af43dccaecf27298224252033520d2a`);
+
+        // console.log(res)
+
+        let data = await res.json()
+        // console.log(data)
+        
+        showWeather(data)
+
+    }
+
+
+    function showWeather(weather){
+
+        container.innerHTML = null
+
+        let name  = document.createElement("h3");
+        name.innerText = weather.name;
+
+        let temp = document.createElement('h3');
+        temp.innerText = Math.round(weather.main.temp - 273) + "°C";
+
+        container.append(name, temp)
+
+    }

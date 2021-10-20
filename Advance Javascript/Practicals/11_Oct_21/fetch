@@ -1,0 +1,41 @@
+
+    let parent = document.getElementById("products");
+    // 0 - get the rigth url
+    // 1 - handle the promise
+    fetch('https://fakestoreapi.com/products')
+    .then(function(res){
+        return res.json()
+    })
+    .then(function(res){
+        console.log("res:",res)
+        // data = res
+        showProducts(res);
+
+        
+    })
+
+    function showProducts(products){
+        products.forEach(function(product){
+            // console.log(product.name);
+            // console.log(product.price)
+            
+            let div = document.createElement("div");
+            let img = document.createElement("img");
+            
+            img.src = product.image
+            
+            let product_name = document.createElement("p");
+            product_name.textContent = product.title;
+            
+            let product_price = document.createElement("p");
+            product_price.textContent = product.price;
+
+            
+            div.append(img, product_name, product_price);
+            parent.append(div);
+    });
+}
+
+
+
+    // console.log(data)

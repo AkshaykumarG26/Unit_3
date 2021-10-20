@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube</title>
+
+    <style>
+        input{
+            /* border-radius: 5px; */
+            /* outline: none; */
+            border-style: none;
+        }
+
+        button{
+            border-style: none;
+        }
+
+        #videos{
+            display: grid;
+            grid-template-columns: repeat(4, 25%);
+
+            /* grid-gap: 10px; */
+
+            /* width: 25%; */
+        }
+    </style>
+</head>
+<body>
+    <input type="text" name="" id="query" placeholder="Search">
+    <button onclick="searchVideos()">Search</button>
+
+    <div id="videos">
+
+        
+
+    </div>
+</body>
+</html>
+
+<script>
+    // AIzaSyCqP5bhdp2g0TL7o43DM0bic06NRz3HUTo
+
+    // https://youtube.googleapis.com/youtube/v3/search?q=csk&type=video&key=[YOUR_API_KEY]
+
+    // https://youtube.googleapis.com/youtube/v3/search?q=${search}&type=video&key=AIzaSyCqP5bhdp2g0TL7o43DM0bic06NRz3HUTo
+
+
+    var videos = document.getElementById("videos")
+
+    async function searchVideos(){
+
+        let search = document.getElementById("query").value;
+
+
+        if (search.length === 0){
+            alert ("enter something to search")
+        }
+
+        else{
+            let response = await fetch(`https://youtube.googleapis.com/youtube/v3/search?maxResults=20&q=${search}&type=video&key=AIzaSyCqP5bhdp2g0TL7o43DM0bic06NRz3HUTo`)
+
+            let data = await response.json();
+
+            console.log("Data: ", data)
+
+            appendVideos(data.items)
+        }
+        
+        // in given below link q means search for and type means videos or channel etc and api key is key max result is number of videos u want to show on display
+
+        
+    }
+
+    searchVideos()
+
+
+    function appendVideos(video_data){
+
+        videos.innerHTML = null
+
+        video_data.forEach(({ id: { videoId }}) => {
+            
+            // console.log("video:", videoId)
+
+            let div = document.createElement("div");
+
+            // embed utube vdo
+
+            div.innerHTML = `<iframe width="260" height="215" src="https://www.youtube.com/embed/${videoId}"title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+
+            div.style.marginTop = "20px";
+            videos.append(div)
+        })
+
+    }
+</script>

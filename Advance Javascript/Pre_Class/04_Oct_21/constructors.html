@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constructor Functions</title>
+</head>
+<body>
+    <h1>Constructor Functions</h1>
+</body>
+</html>
+
+<script>
+
+    /*
+    var person = {
+        name: "Akshau",
+
+        myName: function(){
+            console.log(this.name)
+        }
+    }
+    person.myName()
+
+    
+
+    function player(n,t){
+
+        this.name = n
+        this.team = t
+    }
+
+    var player1 = new player("Sachin", "India")    
+    var player2 = new player("ank", 'sbdi')
+    console.log(player1)
+    console.log(player2)
+
+    */
+
+    person1 = {
+        name: 'amol',
+        surname: 'pudur'
+    }
+
+    person2 = {
+        name : 'akshsh'
+    }
+
+    function myName(a,c){
+        // console.log(this.name,a)
+        this.age = a
+        this.city = c
+    }
+
+    // myName.call(person1)
+    // myName.call(person2)
+
+    var myBind = myName.bind(person1, 21, 'pune');
+    myName.call(person2,21,'pune')
+    myBind()
+    // console.log(myBind)
+    console.log(person1)
+    console.log(person2)
+
+
+</script>
