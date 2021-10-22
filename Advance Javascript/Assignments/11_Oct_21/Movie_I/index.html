@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie App I</title>
+
+    <style>
+
+        #movies{
+            display: grid;
+            grid-template-columns: repeat(4, 25%);
+            /* border: 2px solid black; */
+
+        }
+
+        .search{
+            margin: auto;
+            display: flex;
+            height: 50px;
+            width: 100%;
+            border: 1px solid black;
+        }
+
+        .search button{
+            height: 30px;
+        }
+        .search input{
+
+            height: 30px;
+            width: 400px;
+            font-size: large;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="search">
+        <input type="text" name="" id="query" placeholder="Search">
+        <button id="" onclick="main()">Search</button>
+    </div>
+
+    <div id="moviesShow">
+
+        <div id="movies">
+            
+            
+        </div>
+    </div>
+</body>
+</html>
+
+
+<script>
+
+    var movies_data = document.getElementById("movies");
+
+    
+    async function searchMovies(movie_name){
+        
+        let res = await fetch(`http://www.omdbapi.com/?apikey=c78ab9a6&s=${movie_name}`)
+
+        let data = await res.json()
+
+        console.log("Data: ", data)
+
+        append_movies(data.Search)
+
+    }
+
+
+    function append_movies(movies){
+
+        movies_data.innerHTML = null;
+        
+        movies.forEach(function(movie){
+
+            let div = document.createElement("div");
+
+            div.style.border = '1px solid black'
+            div.style.padding = '10px'
+            div.style.margin = '10px'
+
+            let title = document.createElement("h3");
+            title.innerHTML = movie.Title;
+            
+            let poster = document.createElement('img');
+            poster.src = movie.Poster;
+
+            poster.style.width = '200px'
+            
+            let year = document.createElement('p');
+            year.innerHTML = movie.Year;
+            
+            div.append(title, poster, year)
+            movies_data.append(div)
+        })
+    }
+
+    
+    function main(){
+        var search_movie = document.getElementById("query").value;
+
+        searchMovies(search_movie)
+
+        
+    }
+
+</script>

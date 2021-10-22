@@ -55,7 +55,7 @@
             console.log("e: ", e)
         }
 
-        // console.log(data)
+        console.log(data)
         return data
 
     }
@@ -71,13 +71,16 @@
         
         movies.forEach(function(movie){
 
-            let p = document.createElement("p");
-            p.innerHTML = movie.Title
+            let title = document.createElement("p");
+            title.innerHTML = movie.Title
 
             let img = document.createElement("img");
             img.src = movie.Poster
+
+            let year = document.createElement("p")
+            year.innerHTML = movie.Year
             
-            movies_div.append(p, img)
+            movies_div.append(title, img, year)
 
             // a.append(movies_div)
         })
@@ -101,7 +104,7 @@
 
         let movies_data = res.Search
 
-        console.log(movies_data)
+        console.log("movies_data:",movies_data)
 
 
         appendMovies(movies_data)
