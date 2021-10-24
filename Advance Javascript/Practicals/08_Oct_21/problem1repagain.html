@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="name" placeholder="Name">
+    <button onclick="Register()">Register</button>
+</body>
+</html>
+
+<script>
+
+    var q = ['aksh', 'amol']
+
+
+
+    function Register(){
+
+        var name = document.getElementById("name").value;
+
+        q.push(name)
+        console.log(q)
+
+        let msg = `${name} ur reg successfull`
+
+        alert(msg)
+
+
+        let mypromise = new Promise(function(resolve, reject){
+
+
+            setInterval(function(){
+                if(q[0] === name){
+                resolve(`${name} its ur turn`)
+            }
+        })
+            }, 2000)
+
+        mypromise.then(function(res){
+            alert(res)
+        })
+
+        function startVaccination(){
+
+            q.shift()
+            console.log(q)
+
+            if(q.length === 0){
+                clearInterval(interval)
+            }
+
+        }
+
+        startVaccination()
+
+        let interval = setInterval(startVaccination, 2000)
+    }
+</script>

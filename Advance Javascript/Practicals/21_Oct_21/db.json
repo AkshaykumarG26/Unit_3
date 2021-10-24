@@ -2,13 +2,18 @@
   "products": [
     {
       "id": "1",
-      "name": "parle",
-      "price": "5"
+      "name": "nams",
+      "price": "292"
     },
     {
       "id": "2",
-      "name": "nesley",
-      "price": "20"
+      "name": "ssk",
+      "price": "33"
+    },
+    {
+      "id": "3",
+      "name": "dkd",
+      "price": "420"
     }
   ]
 }

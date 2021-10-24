@@ -32,6 +32,8 @@
     let ageQueue = [25, 24, 21];
 
 
+    var numberOfVaccines = 4;
+
     
     function Register(){
         
@@ -43,7 +45,6 @@
         
         let peopleCount = document.getElementById("peopleCount");
         
-        let numberOfVaccines = 4;
         
         if (age >= 60){
 
@@ -79,29 +80,24 @@
 
         })
 
-        
-        
-
-        
+            
         function startVaccination(){
             nameQueue.shift();
             ageQueue.shift();
-            numberOfVaccines--
-            
-            if(nameQueue.length == 0 && ageQueue.length == 0){
-                clearInterval(interval)
-            }
-            console.log(nameQueue)
-            // console.log(ageQueue)
-            
-            vaccineCount.innerHTML = "Number of vaccines available: " + (+numberOfVaccines);
-            
-            peopleCount.innerHTML = "Number of people in queue: " + nameQueue.length;
-
-
-            if (vaccineCount === "-1"){
-                alert("vaccine out of stock, visit tomorrow")
-            }
+            numberOfVaccines--;
+        
+        if(nameQueue.length == 0 && ageQueue.length == 0){
+            clearInterval(interval)
+        }
+        console.log(nameQueue)
+        // console.log(ageQueue)
+        
+        vaccineCount.innerHTML = "Number of vaccines available: " + (+numberOfVaccines);
+        
+        peopleCount.innerHTML = "Number of people in queue: " + nameQueue.length;
+        
+        
+       
         
         // startVaccination()
 

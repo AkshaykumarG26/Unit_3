@@ -53,14 +53,17 @@
 
         setTimeout(function(){
             BtoG.pop();
+            console.log("Number Of Passengers in BtoG: ", BtoG.length)
         }, cancelling_speed1 * 1000)
 
         setTimeout(function(){
             MtoG.pop();
+            console.log("Number Of Passengers in MtoG: ", MtoG.length)
         }, cancelling_speed2 * 1000)
 
         setTimeout(function(){
             PtoG.pop();
+            console.log("Number Of Passengers in PtoG: ", PtoG.length)
         }, cancelling_speed3 * 1000)
         
         console.log(BtoG, MtoG, PtoG)

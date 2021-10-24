@@ -8,8 +8,8 @@
 
     <style>
         div{
-            width: 30%;
-            border: 1px solid black;
+            width: 20%;
+            /* border: 1px solid black; */
         }
 
         div input{
@@ -30,27 +30,34 @@
         <input type="number" name="" id="price" placeholder="Price">
         <button onclick="addProduct()">Add Products</button>
     </div>
-
+    <br>
     <h1>Delete Products</h1>
     <div>
-
         <input type="text" name="" id="product_id" placeholder="id">
         <button onclick="deleteProduct()">Delete Product</button>
-
     </div>
+    <br>
+    <h1>Edit Product</h1>
+    <div>
+        <input type="text" name="" id="productId" placeholder="id">
+        <input type="text" name="" id="productPrice" placeholder="Price">
+        <button onclick="editProduct()">Edit Product</button>
+    </div>
+
+
 </body>
 </html>
 
 
 <script>
 
-    async function getData(){
-        let res = await fetch(`http://localhost:8000/api/products`)
+    // async function getData(){
+    //     let res = await fetch(`http://localhost:8000/api/products`)
 
-        let data = await res.json()
+    //     let data = await res.json()
 
-        console.log(data)
-    }
+    //     console.log(data)
+    // }
 
     // getData()
 
@@ -66,7 +73,7 @@
 
         try{
 
-            let response = await fetch(`http://localhost:8000/api/products`, {
+            let response = await fetch(`http://localhost:5000/api/products`, {
                 
                 method: 'POST',
                 
@@ -97,7 +104,7 @@
             
             let id = document.getElementById('product_id').value;
             
-            let response = await fetch(`http://localhost:8000/api/products/${id}`, {
+            let response = await fetch(`http://localhost:5000/api/products/${id}`, {
                 
                 method: 'DELETE',
                 
@@ -107,8 +114,45 @@
                 },
                 
             })
+
+
         }catch(e){
             console.log("e:",e)
         }
     }
-</script>
+
+
+    async function editProduct(){
+
+        let products = {
+
+            
+            id: document.getElementById("productId").value,
+            
+            price: document.getElementById("productPrice").value,
+        }
+
+        try{
+
+            let res = await fetch(`http://localhost:5000/api/products`,{
+
+                method: "PUT",
+                
+                body: JSON.stringify(products),
+                
+                headers:{
+                    "Content-Type": "application/json",
+                }
+            })
+
+            var fdata = await res.json()
+            console.log("Fdata:",fdata)
+
+        }catch(e){
+            console.log("SOmething is wrong:", e)
+        }
+
+        
+    }
+
+</script>   
