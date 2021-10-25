@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies App_II</title>
+</head>
+<body>
+    <div>
+        <input type="text" name="" id="query" placeholder="Search">
+        <button onclick="showMovies()">Search</button>
+    </div>
+
+    <div id="showData">
+
+    </div>
+</body>
+</html>
+
+<script>
+
+    var parent = document.getElementById("showData")
+    
+    async function showMovies(searchMovie){
+        
+        var searchMovie = document.getElementById("query").value;
+
+        parent.innerHTML = null;
+        
+        try{
+
+            let res = await fetch(`http://www.omdbapi.com/?apikey=c78ab9a6&s=${searchMovie}`)
+            
+            let data = await res.json()
+            
+            
+            if (data.Response == 'False'){
+                let img = document.createElement("img")
+                
+                img.src = ("https://lh3.googleusercontent.com/LzRa_AauVmYYTOYav0K0ka_oBtKfimdoR7pEHioAIOljnKcv0dVPN0_WVPS3mOMDWrMifQ=s106")
+                
+                parent.append(img)
+            }else{
+                console.log("data: ", data)
+            }
+        }catch(e){
+
+            console.log("e:", e)
+        }
+
+        
+
+
+        
+
+    }   
+
+    // showMovies("avatar")
+</script>
