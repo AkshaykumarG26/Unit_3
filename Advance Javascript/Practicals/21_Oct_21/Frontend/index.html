@@ -41,6 +41,7 @@
     <div>
         <input type="text" name="" id="productId" placeholder="id">
         <input type="text" name="" id="productPrice" placeholder="Price">
+        <input type="text" name="" id="productName" placeholder="Name">
         <button onclick="editProduct()">Edit Product</button>
     </div>
 
@@ -116,30 +117,43 @@
 
         let products = {
 
-            
             id: document.getElementById("productId").value,
             
             price: document.getElementById("productPrice").value,
+
+            name: document.getElementById("productName").value,
         }
+
+        // console.log(products)
 
         try{
 
-            let res = await fetch(`http://localhost:5000/api/products`,{
+            fetch(`http://localhost:5000/api/products/${products.id}`,{
 
                 method: "PUT",
                 
-                body: JSON.stringify(products),
+                body: JSON.stringify({
+
+                    id: products.id,
+
+                    name: products.name,
+
+                    price: products.price,
+                    
+                    // completed: false,
+
+                }),
                 
                 headers:{
                     "Content-Type": "application/json",
                 }
+                
             })
-
-            var fdata = await res.json()
-            console.log("Fdata:",fdata)
+                .then(response => response.json())
+                .then(json => console.log(json))
 
         }catch(e){
-            console.log("SOmething is wrong:", e)
+            console.log("Something is wrong:", e)
         }
 
         

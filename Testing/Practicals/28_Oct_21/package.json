@@ -1,0 +1,14 @@
+{
+  "name": "28_oct_21",
+  "version": "1.0.0",
+  "description": "",
+  "main": "problem1.js",
+  "scripts": {
+    "test": "jest --watchAll"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^27.3.1"
+  }
+}

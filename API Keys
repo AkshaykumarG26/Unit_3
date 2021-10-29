@@ -9,5 +9,13 @@ http://www.omdbapi.com/?type=${movieName}&apikey=c78ab9a6    => omdbapi
 `http://www.omdbapi.com/?apikey=c78ab9a6&s=${movieName}`   => for search movie omdbapi
 
 
+http://www.omdbapi.com/?i=tt3896198&apikey=c78ab9a6    => omdbapi for ratings
+
+
+
 
 AIzaSyCqP5bhdp2g0TL7o43DM0bic06NRz3HUTo   => youtube
+
+
+
+https://imdb-api.com/en/API/SearchMovie/k_kal9ah6k/{moviename}    => imdb api 
