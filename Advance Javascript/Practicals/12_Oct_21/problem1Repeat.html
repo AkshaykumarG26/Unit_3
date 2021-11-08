@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        input{
+            width: 250px;
+        }
+
+        #movies{
+            height: 400px;
+            width: 255px;
+            border: 1px gray solid;
+            overflow: scroll;
+        }
+    </style>
+</head>
+<body>
+    
+    <div>
+        <input oninput="main()" type="text" name="" id="movie" placeholder="Enter movie name">
+    </div>
+    <div id="movies">
+
+    </div>
+</body>
+</html>
+
+
+<script>
+
+
+    let movies_div = document.getElementById("movies");
+
+    // search Movies
+    async function searchMovies(movieName){
+
+        try{
+
+            let res = await fetch(`http://www.omdbapi.com/?apikey=c78ab9a6&s=${movieName}`)
+            
+            let data = await res.json()
+
+            // console.log("data: ", data)
+
+            return data.Search
+
+            // appendMovies(data.Search)
+
+        }catch(e){
+            console.log("e: ", e);
+        }
+
+    }
+
+
+    function appendMovies(movies){
+
+        if(movies === undefined){
+            return false
+        }
+
+        movies_div.innerHTML = null
+
+        movies.forEach(function(movie){
+
+            let title = document.createElement("p")
+            title.innerText = movie.Title;
+
+            let poster = document.createElement("img")
+
+            
+            poster.src = movie.Poster;
+
+
+            movies_div.append(title, poster)
+        })
+    }
+
+
+    // searchMovies("inception")
+
+
+
+    async function main(){
+
+        let movie_name = document.getElementById("movie").value;
+
+        // get seached movie
+
+        let res = await searchMovies(movie_name)
+
+        appendMovies(res)
+
+        console.log(res)
+    }
+
+
+
+
+</script>
