@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div id="navbar"></div>
+    <div id="login">
+        <form onclick="login(event)" id="login-form" class="px-80 py-20" >
+            <h1 class="text-3xl p-3 align-middle">Login</h1>
+            <input type="text" id="username" class="text-2xl" placeholder="username"/><br><br>
+            <input type="text" id="password" class="text-2xl" placeholder="password" /><br><br>
+            <input type="submit" class="hover:cursor-auto p-3 bg-black text-white"/><br>
+        </form>
+    </div>
+</body>
+</html>
+<script>
+    
+</script>
+<script type="module">
+    import navbar from "./food.js"
+    document.getElementById("navbar").innerHTML = navbar()
+</script>
