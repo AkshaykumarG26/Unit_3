@@ -7,7 +7,10 @@
 
         let res = await fetch(`http://www.omdbapi.com/?apikey=c78ab9a6&s=${movieName}`);
 
+        
         let data = await res.json()
+        
+        // console.log(data)
 
         var d = data.Search
 
