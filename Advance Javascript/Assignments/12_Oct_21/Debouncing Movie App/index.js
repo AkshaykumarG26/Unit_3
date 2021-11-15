@@ -1,4 +1,6 @@
 
+
+var timerId;
     var parent = document.getElementById("movieData");
 
     async function findMovie(movieName){
@@ -14,12 +16,10 @@
 
         var d = data.Search
 
-        if(data.Response == 'False'){
-            alert("Error...! The movie you are searching for dosen't exist...!")
-        }else{
+        
             findRatings(d)
             // console.log(d)
-        }
+    
 
 
         
@@ -95,3 +95,44 @@
             parent.append(div)
     }
     
+
+
+    async function main(){
+
+        let name = document.getElementById("query").value;
+
+        // get searchd movies
+
+        if(name.length < 3){
+            return false;
+        }
+
+        let res = await findMovie(name);
+
+        let movies_data = res.Search
+
+        console.log("movies_data:",movies_data)
+
+
+        showDetails(movies_data)
+
+    }
+
+
+
+    function debounce(func, delay){
+
+        if(timerId){
+
+            clearTimeout(timerId)
+        }
+
+
+        timerId = setTimeout(function(){
+
+            func();
+
+        }, delay);
+
+
+    }
