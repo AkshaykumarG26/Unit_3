@@ -56,7 +56,7 @@ var timerId;
 
             let title = document.createElement("h3")
             title.innerHTML = "Title: " + movies.Title;
-
+// length
             let poster = document.createElement("img")
             poster.src = movies.Poster;
 
