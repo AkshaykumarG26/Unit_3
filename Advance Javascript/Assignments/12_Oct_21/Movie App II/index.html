@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,31 +8,31 @@
     <title>Movies App_II</title>
 
     <style>
-
-        #showData{
+        #showData {
             display: grid;
             grid-template-columns: repeat(3, 30%);
             grid-gap: 30px;
             padding-left: 20px;
             align-items: stretch;
         }
-        
-        #showData > div{
+
+        #showData>div {
             border: 1px solid gray;
 
         }
 
-        #showData img{
+        #showData img {
             width: 80%;
             padding: 20px;
 
         }
 
-        #showdata  h3{
+        #showdata h3 {
             margin-left: 20px;
         }
-        </style>
+    </style>
 </head>
+
 <body>
     <div>
         <input type="text" name="" id="query" placeholder="Search">
@@ -43,67 +44,68 @@
 
     </div>
 
-    
+
 </body>
+
 </html>
 
 <script>
 
     var parent = document.getElementById("showData")
-    
-    async function findMovie(searchMovie){
-        
+
+    async function findMovie(searchMovie) {
+
         var searchMovie = document.getElementById("query").value;
 
         parent.innerHTML = null;
-        
-        try{
+
+        try {
 
             let res = await fetch(`http://www.omdbapi.com/?apikey=c78ab9a6&s=${searchMovie}`)
-            
+
             let data = await res.json()
-            
+
             console.log(data)
 
-            
-            if (data.Response == 'False'){
+
+            if (data.Response == 'False') {
                 let img = document.createElement("img")
 
                 let p = document.createElement('h2');
                 p.innerHTML = "Movie not found Please search for valid movie"
-                
+
                 img.src = ("https://c.tenor.com/lC6rRJVc-ugAAAAM/i-made-a-mistake-carbonfin.gif")
-                
+
                 parent.append(img, p)
 
                 img.style.alignContent = "center"
 
                 alert("XXX...No Movie Found...XXX")
-            }else{
+            } else {
                 console.log("data: ", data.Search)
 
                 showMovies(data.Search)
             }
-        }catch(e){
+        } catch (e) {
 
             console.log("e:", e)
         }
-        
-
-    }   
 
 
-    function showMovies(movie){
+    }
 
-        movie.forEach(function(m){
 
-            // let button = document.createElement("button");
+    function showMovies(movie) {
 
-            let div = document.createElement("div");
-            
+        movie.forEach(function (m) {
+
+            let button = document.createElement("button");
+
+            //let div = document.createElement("div");
+
             let title = document.createElement("h3");
             title.innerHTML = m.Title;
-            
+
             let poster = document.createElement("img");
             poster.src = m.Poster;
 
@@ -111,19 +113,19 @@
             year.innerHTML = "Year: " + m.Year;
 
             let ratings = document.createElement('p');
-            ratings.innerHTML = "Ratings: " +  (Math.random()*5).toFixed(2);
+            ratings.innerHTML = "Ratings: " + (Math.random() * 5).toFixed(2);
+
+
+            button.append(title, poster, year)
+
+            //div.append(title, poster, year, ratings)
+
+            button.addEventListener("click", showDetails)
+
+            //parent.append(div)
+            parent.append(button)
 
             
-            // button.append(title, poster, year)
-
-            div.append(title, poster, year, ratings)
-
-            // button.addEventListener("click", showDetails)
-            
-            parent.append(div)
-            // parent.append(button)
-
-            /*
             function showDetails(){
             
                 // var p = document.createElement("p")
@@ -142,9 +144,9 @@
                 parent.append(title, poster, year)
             }
 
-            */
+            
         })
-        
+
     }
 
 
